@@ -1,0 +1,1038 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.9.0 #11195 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module Timer
+                                      6 	.optsdcc -mmcs51 --model-large
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _P5_7
+                                     12 	.globl _P5_6
+                                     13 	.globl _P5_5
+                                     14 	.globl _P5_4
+                                     15 	.globl _P5_3
+                                     16 	.globl _P5_2
+                                     17 	.globl _P5_1
+                                     18 	.globl _P5_0
+                                     19 	.globl _P4_7
+                                     20 	.globl _P4_6
+                                     21 	.globl _P4_5
+                                     22 	.globl _P4_4
+                                     23 	.globl _P4_3
+                                     24 	.globl _P4_2
+                                     25 	.globl _P4_1
+                                     26 	.globl _P4_0
+                                     27 	.globl _PX0L
+                                     28 	.globl _PT0L
+                                     29 	.globl _PX1L
+                                     30 	.globl _PT1L
+                                     31 	.globl _PSL
+                                     32 	.globl _PT2L
+                                     33 	.globl _PPCL
+                                     34 	.globl _EC
+                                     35 	.globl _CCF0
+                                     36 	.globl _CCF1
+                                     37 	.globl _CCF2
+                                     38 	.globl _CCF3
+                                     39 	.globl _CCF4
+                                     40 	.globl _CR
+                                     41 	.globl _CF
+                                     42 	.globl _TF2
+                                     43 	.globl _EXF2
+                                     44 	.globl _RCLK
+                                     45 	.globl _TCLK
+                                     46 	.globl _EXEN2
+                                     47 	.globl _TR2
+                                     48 	.globl _C_T2
+                                     49 	.globl _CP_RL2
+                                     50 	.globl _T2CON_7
+                                     51 	.globl _T2CON_6
+                                     52 	.globl _T2CON_5
+                                     53 	.globl _T2CON_4
+                                     54 	.globl _T2CON_3
+                                     55 	.globl _T2CON_2
+                                     56 	.globl _T2CON_1
+                                     57 	.globl _T2CON_0
+                                     58 	.globl _PT2
+                                     59 	.globl _ET2
+                                     60 	.globl _TF1
+                                     61 	.globl _TR1
+                                     62 	.globl _TF0
+                                     63 	.globl _TR0
+                                     64 	.globl _IE1
+                                     65 	.globl _IT1
+                                     66 	.globl _IE0
+                                     67 	.globl _IT0
+                                     68 	.globl _SM0
+                                     69 	.globl _SM1
+                                     70 	.globl _SM2
+                                     71 	.globl _REN
+                                     72 	.globl _TB8
+                                     73 	.globl _RB8
+                                     74 	.globl _TI
+                                     75 	.globl _RI
+                                     76 	.globl _CY
+                                     77 	.globl _AC
+                                     78 	.globl _F0
+                                     79 	.globl _RS1
+                                     80 	.globl _RS0
+                                     81 	.globl _OV
+                                     82 	.globl _F1
+                                     83 	.globl _P
+                                     84 	.globl _RD
+                                     85 	.globl _WR
+                                     86 	.globl _T1
+                                     87 	.globl _T0
+                                     88 	.globl _INT1
+                                     89 	.globl _INT0
+                                     90 	.globl _TXD0
+                                     91 	.globl _TXD
+                                     92 	.globl _RXD0
+                                     93 	.globl _RXD
+                                     94 	.globl _P3_7
+                                     95 	.globl _P3_6
+                                     96 	.globl _P3_5
+                                     97 	.globl _P3_4
+                                     98 	.globl _P3_3
+                                     99 	.globl _P3_2
+                                    100 	.globl _P3_1
+                                    101 	.globl _P3_0
+                                    102 	.globl _P2_7
+                                    103 	.globl _P2_6
+                                    104 	.globl _P2_5
+                                    105 	.globl _P2_4
+                                    106 	.globl _P2_3
+                                    107 	.globl _P2_2
+                                    108 	.globl _P2_1
+                                    109 	.globl _P2_0
+                                    110 	.globl _P1_7
+                                    111 	.globl _P1_6
+                                    112 	.globl _P1_5
+                                    113 	.globl _P1_4
+                                    114 	.globl _P1_3
+                                    115 	.globl _P1_2
+                                    116 	.globl _P1_1
+                                    117 	.globl _P1_0
+                                    118 	.globl _P0_7
+                                    119 	.globl _P0_6
+                                    120 	.globl _P0_5
+                                    121 	.globl _P0_4
+                                    122 	.globl _P0_3
+                                    123 	.globl _P0_2
+                                    124 	.globl _P0_1
+                                    125 	.globl _P0_0
+                                    126 	.globl _PS
+                                    127 	.globl _PT1
+                                    128 	.globl _PX1
+                                    129 	.globl _PT0
+                                    130 	.globl _PX0
+                                    131 	.globl _EA
+                                    132 	.globl _ES
+                                    133 	.globl _ET1
+                                    134 	.globl _EX1
+                                    135 	.globl _ET0
+                                    136 	.globl _EX0
+                                    137 	.globl _BREG_F7
+                                    138 	.globl _BREG_F6
+                                    139 	.globl _BREG_F5
+                                    140 	.globl _BREG_F4
+                                    141 	.globl _BREG_F3
+                                    142 	.globl _BREG_F2
+                                    143 	.globl _BREG_F1
+                                    144 	.globl _BREG_F0
+                                    145 	.globl _EECON
+                                    146 	.globl _KBF
+                                    147 	.globl _KBE
+                                    148 	.globl _KBLS
+                                    149 	.globl _BRL
+                                    150 	.globl _BDRCON
+                                    151 	.globl _T2MOD
+                                    152 	.globl _SPDAT
+                                    153 	.globl _SPSTA
+                                    154 	.globl _SPCON
+                                    155 	.globl _SADEN
+                                    156 	.globl _SADDR
+                                    157 	.globl _WDTPRG
+                                    158 	.globl _WDTRST
+                                    159 	.globl _P5
+                                    160 	.globl _P4
+                                    161 	.globl _IPH1
+                                    162 	.globl _IPL1
+                                    163 	.globl _IPH0
+                                    164 	.globl _IPL0
+                                    165 	.globl _IEN1
+                                    166 	.globl _IEN0
+                                    167 	.globl _CMOD
+                                    168 	.globl _CL
+                                    169 	.globl _CH
+                                    170 	.globl _CCON
+                                    171 	.globl _CCAPM4
+                                    172 	.globl _CCAPM3
+                                    173 	.globl _CCAPM2
+                                    174 	.globl _CCAPM1
+                                    175 	.globl _CCAPM0
+                                    176 	.globl _CCAP4L
+                                    177 	.globl _CCAP3L
+                                    178 	.globl _CCAP2L
+                                    179 	.globl _CCAP1L
+                                    180 	.globl _CCAP0L
+                                    181 	.globl _CCAP4H
+                                    182 	.globl _CCAP3H
+                                    183 	.globl _CCAP2H
+                                    184 	.globl _CCAP1H
+                                    185 	.globl _CCAP0H
+                                    186 	.globl _CKCON1
+                                    187 	.globl _CKCON0
+                                    188 	.globl _CKRL
+                                    189 	.globl _AUXR1
+                                    190 	.globl _AUXR
+                                    191 	.globl _TH2
+                                    192 	.globl _TL2
+                                    193 	.globl _RCAP2H
+                                    194 	.globl _RCAP2L
+                                    195 	.globl _T2CON
+                                    196 	.globl _TMOD
+                                    197 	.globl _TL1
+                                    198 	.globl _TL0
+                                    199 	.globl _TH1
+                                    200 	.globl _TH0
+                                    201 	.globl _TCON
+                                    202 	.globl _SP
+                                    203 	.globl _SCON
+                                    204 	.globl _SBUF0
+                                    205 	.globl _SBUF
+                                    206 	.globl _PSW
+                                    207 	.globl _PCON
+                                    208 	.globl _P3
+                                    209 	.globl _P2
+                                    210 	.globl _P1
+                                    211 	.globl _P0
+                                    212 	.globl _IP
+                                    213 	.globl _IE
+                                    214 	.globl _DP0L
+                                    215 	.globl _DPL
+                                    216 	.globl _DP0H
+                                    217 	.globl _DPH
+                                    218 	.globl _B
+                                    219 	.globl _ACC
+                                    220 	.globl _interrupt_flag
+                                    221 	.globl _Frequency
+                                    222 	.globl _Percent
+                                    223 	.globl _TimerL_PARM_2
+                                    224 	.globl _TimerH_PARM_2
+                                    225 	.globl _ValueL
+                                    226 	.globl _ConvLL
+                                    227 	.globl _ConvHL
+                                    228 	.globl _ValueH
+                                    229 	.globl _ConvLH
+                                    230 	.globl _ConvHH
+                                    231 	.globl _TotalDelayMicro
+                                    232 	.globl _TotalDelayMilli
+                                    233 	.globl _HighTime
+                                    234 	.globl _LowTime
+                                    235 	.globl _TimerH
+                                    236 	.globl _TimerL
+                                    237 	.globl _timecal
+                                    238 ;--------------------------------------------------------
+                                    239 ; special function registers
+                                    240 ;--------------------------------------------------------
+                                    241 	.area RSEG    (ABS,DATA)
+      000000                        242 	.org 0x0000
+                           0000E0   243 _ACC	=	0x00e0
+                           0000F0   244 _B	=	0x00f0
+                           000083   245 _DPH	=	0x0083
+                           000083   246 _DP0H	=	0x0083
+                           000082   247 _DPL	=	0x0082
+                           000082   248 _DP0L	=	0x0082
+                           0000A8   249 _IE	=	0x00a8
+                           0000B8   250 _IP	=	0x00b8
+                           000080   251 _P0	=	0x0080
+                           000090   252 _P1	=	0x0090
+                           0000A0   253 _P2	=	0x00a0
+                           0000B0   254 _P3	=	0x00b0
+                           000087   255 _PCON	=	0x0087
+                           0000D0   256 _PSW	=	0x00d0
+                           000099   257 _SBUF	=	0x0099
+                           000099   258 _SBUF0	=	0x0099
+                           000098   259 _SCON	=	0x0098
+                           000081   260 _SP	=	0x0081
+                           000088   261 _TCON	=	0x0088
+                           00008C   262 _TH0	=	0x008c
+                           00008D   263 _TH1	=	0x008d
+                           00008A   264 _TL0	=	0x008a
+                           00008B   265 _TL1	=	0x008b
+                           000089   266 _TMOD	=	0x0089
+                           0000C8   267 _T2CON	=	0x00c8
+                           0000CA   268 _RCAP2L	=	0x00ca
+                           0000CB   269 _RCAP2H	=	0x00cb
+                           0000CC   270 _TL2	=	0x00cc
+                           0000CD   271 _TH2	=	0x00cd
+                           00008E   272 _AUXR	=	0x008e
+                           0000A2   273 _AUXR1	=	0x00a2
+                           000097   274 _CKRL	=	0x0097
+                           00008F   275 _CKCON0	=	0x008f
+                           0000AF   276 _CKCON1	=	0x00af
+                           0000FA   277 _CCAP0H	=	0x00fa
+                           0000FB   278 _CCAP1H	=	0x00fb
+                           0000FC   279 _CCAP2H	=	0x00fc
+                           0000FD   280 _CCAP3H	=	0x00fd
+                           0000FE   281 _CCAP4H	=	0x00fe
+                           0000EA   282 _CCAP0L	=	0x00ea
+                           0000EB   283 _CCAP1L	=	0x00eb
+                           0000EC   284 _CCAP2L	=	0x00ec
+                           0000ED   285 _CCAP3L	=	0x00ed
+                           0000EE   286 _CCAP4L	=	0x00ee
+                           0000DA   287 _CCAPM0	=	0x00da
+                           0000DB   288 _CCAPM1	=	0x00db
+                           0000DC   289 _CCAPM2	=	0x00dc
+                           0000DD   290 _CCAPM3	=	0x00dd
+                           0000DE   291 _CCAPM4	=	0x00de
+                           0000D8   292 _CCON	=	0x00d8
+                           0000F9   293 _CH	=	0x00f9
+                           0000E9   294 _CL	=	0x00e9
+                           0000D9   295 _CMOD	=	0x00d9
+                           0000A8   296 _IEN0	=	0x00a8
+                           0000B1   297 _IEN1	=	0x00b1
+                           0000B8   298 _IPL0	=	0x00b8
+                           0000B7   299 _IPH0	=	0x00b7
+                           0000B2   300 _IPL1	=	0x00b2
+                           0000B3   301 _IPH1	=	0x00b3
+                           0000C0   302 _P4	=	0x00c0
+                           0000E8   303 _P5	=	0x00e8
+                           0000A6   304 _WDTRST	=	0x00a6
+                           0000A7   305 _WDTPRG	=	0x00a7
+                           0000A9   306 _SADDR	=	0x00a9
+                           0000B9   307 _SADEN	=	0x00b9
+                           0000C3   308 _SPCON	=	0x00c3
+                           0000C4   309 _SPSTA	=	0x00c4
+                           0000C5   310 _SPDAT	=	0x00c5
+                           0000C9   311 _T2MOD	=	0x00c9
+                           00009B   312 _BDRCON	=	0x009b
+                           00009A   313 _BRL	=	0x009a
+                           00009C   314 _KBLS	=	0x009c
+                           00009D   315 _KBE	=	0x009d
+                           00009E   316 _KBF	=	0x009e
+                           0000D2   317 _EECON	=	0x00d2
+                                    318 ;--------------------------------------------------------
+                                    319 ; special function bits
+                                    320 ;--------------------------------------------------------
+                                    321 	.area RSEG    (ABS,DATA)
+      000000                        322 	.org 0x0000
+                           0000F0   323 _BREG_F0	=	0x00f0
+                           0000F1   324 _BREG_F1	=	0x00f1
+                           0000F2   325 _BREG_F2	=	0x00f2
+                           0000F3   326 _BREG_F3	=	0x00f3
+                           0000F4   327 _BREG_F4	=	0x00f4
+                           0000F5   328 _BREG_F5	=	0x00f5
+                           0000F6   329 _BREG_F6	=	0x00f6
+                           0000F7   330 _BREG_F7	=	0x00f7
+                           0000A8   331 _EX0	=	0x00a8
+                           0000A9   332 _ET0	=	0x00a9
+                           0000AA   333 _EX1	=	0x00aa
+                           0000AB   334 _ET1	=	0x00ab
+                           0000AC   335 _ES	=	0x00ac
+                           0000AF   336 _EA	=	0x00af
+                           0000B8   337 _PX0	=	0x00b8
+                           0000B9   338 _PT0	=	0x00b9
+                           0000BA   339 _PX1	=	0x00ba
+                           0000BB   340 _PT1	=	0x00bb
+                           0000BC   341 _PS	=	0x00bc
+                           000080   342 _P0_0	=	0x0080
+                           000081   343 _P0_1	=	0x0081
+                           000082   344 _P0_2	=	0x0082
+                           000083   345 _P0_3	=	0x0083
+                           000084   346 _P0_4	=	0x0084
+                           000085   347 _P0_5	=	0x0085
+                           000086   348 _P0_6	=	0x0086
+                           000087   349 _P0_7	=	0x0087
+                           000090   350 _P1_0	=	0x0090
+                           000091   351 _P1_1	=	0x0091
+                           000092   352 _P1_2	=	0x0092
+                           000093   353 _P1_3	=	0x0093
+                           000094   354 _P1_4	=	0x0094
+                           000095   355 _P1_5	=	0x0095
+                           000096   356 _P1_6	=	0x0096
+                           000097   357 _P1_7	=	0x0097
+                           0000A0   358 _P2_0	=	0x00a0
+                           0000A1   359 _P2_1	=	0x00a1
+                           0000A2   360 _P2_2	=	0x00a2
+                           0000A3   361 _P2_3	=	0x00a3
+                           0000A4   362 _P2_4	=	0x00a4
+                           0000A5   363 _P2_5	=	0x00a5
+                           0000A6   364 _P2_6	=	0x00a6
+                           0000A7   365 _P2_7	=	0x00a7
+                           0000B0   366 _P3_0	=	0x00b0
+                           0000B1   367 _P3_1	=	0x00b1
+                           0000B2   368 _P3_2	=	0x00b2
+                           0000B3   369 _P3_3	=	0x00b3
+                           0000B4   370 _P3_4	=	0x00b4
+                           0000B5   371 _P3_5	=	0x00b5
+                           0000B6   372 _P3_6	=	0x00b6
+                           0000B7   373 _P3_7	=	0x00b7
+                           0000B0   374 _RXD	=	0x00b0
+                           0000B0   375 _RXD0	=	0x00b0
+                           0000B1   376 _TXD	=	0x00b1
+                           0000B1   377 _TXD0	=	0x00b1
+                           0000B2   378 _INT0	=	0x00b2
+                           0000B3   379 _INT1	=	0x00b3
+                           0000B4   380 _T0	=	0x00b4
+                           0000B5   381 _T1	=	0x00b5
+                           0000B6   382 _WR	=	0x00b6
+                           0000B7   383 _RD	=	0x00b7
+                           0000D0   384 _P	=	0x00d0
+                           0000D1   385 _F1	=	0x00d1
+                           0000D2   386 _OV	=	0x00d2
+                           0000D3   387 _RS0	=	0x00d3
+                           0000D4   388 _RS1	=	0x00d4
+                           0000D5   389 _F0	=	0x00d5
+                           0000D6   390 _AC	=	0x00d6
+                           0000D7   391 _CY	=	0x00d7
+                           000098   392 _RI	=	0x0098
+                           000099   393 _TI	=	0x0099
+                           00009A   394 _RB8	=	0x009a
+                           00009B   395 _TB8	=	0x009b
+                           00009C   396 _REN	=	0x009c
+                           00009D   397 _SM2	=	0x009d
+                           00009E   398 _SM1	=	0x009e
+                           00009F   399 _SM0	=	0x009f
+                           000088   400 _IT0	=	0x0088
+                           000089   401 _IE0	=	0x0089
+                           00008A   402 _IT1	=	0x008a
+                           00008B   403 _IE1	=	0x008b
+                           00008C   404 _TR0	=	0x008c
+                           00008D   405 _TF0	=	0x008d
+                           00008E   406 _TR1	=	0x008e
+                           00008F   407 _TF1	=	0x008f
+                           0000AD   408 _ET2	=	0x00ad
+                           0000BD   409 _PT2	=	0x00bd
+                           0000C8   410 _T2CON_0	=	0x00c8
+                           0000C9   411 _T2CON_1	=	0x00c9
+                           0000CA   412 _T2CON_2	=	0x00ca
+                           0000CB   413 _T2CON_3	=	0x00cb
+                           0000CC   414 _T2CON_4	=	0x00cc
+                           0000CD   415 _T2CON_5	=	0x00cd
+                           0000CE   416 _T2CON_6	=	0x00ce
+                           0000CF   417 _T2CON_7	=	0x00cf
+                           0000C8   418 _CP_RL2	=	0x00c8
+                           0000C9   419 _C_T2	=	0x00c9
+                           0000CA   420 _TR2	=	0x00ca
+                           0000CB   421 _EXEN2	=	0x00cb
+                           0000CC   422 _TCLK	=	0x00cc
+                           0000CD   423 _RCLK	=	0x00cd
+                           0000CE   424 _EXF2	=	0x00ce
+                           0000CF   425 _TF2	=	0x00cf
+                           0000DF   426 _CF	=	0x00df
+                           0000DE   427 _CR	=	0x00de
+                           0000DC   428 _CCF4	=	0x00dc
+                           0000DB   429 _CCF3	=	0x00db
+                           0000DA   430 _CCF2	=	0x00da
+                           0000D9   431 _CCF1	=	0x00d9
+                           0000D8   432 _CCF0	=	0x00d8
+                           0000AE   433 _EC	=	0x00ae
+                           0000BE   434 _PPCL	=	0x00be
+                           0000BD   435 _PT2L	=	0x00bd
+                           0000BC   436 _PSL	=	0x00bc
+                           0000BB   437 _PT1L	=	0x00bb
+                           0000BA   438 _PX1L	=	0x00ba
+                           0000B9   439 _PT0L	=	0x00b9
+                           0000B8   440 _PX0L	=	0x00b8
+                           0000C0   441 _P4_0	=	0x00c0
+                           0000C1   442 _P4_1	=	0x00c1
+                           0000C2   443 _P4_2	=	0x00c2
+                           0000C3   444 _P4_3	=	0x00c3
+                           0000C4   445 _P4_4	=	0x00c4
+                           0000C5   446 _P4_5	=	0x00c5
+                           0000C6   447 _P4_6	=	0x00c6
+                           0000C7   448 _P4_7	=	0x00c7
+                           0000E8   449 _P5_0	=	0x00e8
+                           0000E9   450 _P5_1	=	0x00e9
+                           0000EA   451 _P5_2	=	0x00ea
+                           0000EB   452 _P5_3	=	0x00eb
+                           0000EC   453 _P5_4	=	0x00ec
+                           0000ED   454 _P5_5	=	0x00ed
+                           0000EE   455 _P5_6	=	0x00ee
+                           0000EF   456 _P5_7	=	0x00ef
+                                    457 ;--------------------------------------------------------
+                                    458 ; overlayable register banks
+                                    459 ;--------------------------------------------------------
+                                    460 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                        461 	.ds 8
+                                    462 ;--------------------------------------------------------
+                                    463 ; internal ram data
+                                    464 ;--------------------------------------------------------
+                                    465 	.area DSEG    (DATA)
+                                    466 ;--------------------------------------------------------
+                                    467 ; overlayable items in internal ram 
+                                    468 ;--------------------------------------------------------
+                                    469 ;--------------------------------------------------------
+                                    470 ; indirectly addressable internal ram data
+                                    471 ;--------------------------------------------------------
+                                    472 	.area ISEG    (DATA)
+                                    473 ;--------------------------------------------------------
+                                    474 ; absolute internal ram data
+                                    475 ;--------------------------------------------------------
+                                    476 	.area IABS    (ABS,DATA)
+                                    477 	.area IABS    (ABS,DATA)
+                                    478 ;--------------------------------------------------------
+                                    479 ; bit data
+                                    480 ;--------------------------------------------------------
+                                    481 	.area BSEG    (BIT)
+                                    482 ;--------------------------------------------------------
+                                    483 ; paged external ram data
+                                    484 ;--------------------------------------------------------
+                                    485 	.area PSEG    (PAG,XDATA)
+                                    486 ;--------------------------------------------------------
+                                    487 ; external ram data
+                                    488 ;--------------------------------------------------------
+                                    489 	.area XSEG    (XDATA)
+      000000                        490 _LowTime::
+      000000                        491 	.ds 4
+      000004                        492 _HighTime::
+      000004                        493 	.ds 4
+      000008                        494 _TotalDelayMilli::
+      000008                        495 	.ds 4
+      00000C                        496 _TotalDelayMicro::
+      00000C                        497 	.ds 4
+      000010                        498 _ConvHH::
+      000010                        499 	.ds 2
+      000012                        500 _ConvLH::
+      000012                        501 	.ds 2
+      000014                        502 _ValueH::
+      000014                        503 	.ds 2
+      000016                        504 _ConvHL::
+      000016                        505 	.ds 2
+      000018                        506 _ConvLL::
+      000018                        507 	.ds 2
+      00001A                        508 _ValueL::
+      00001A                        509 	.ds 2
+      00001C                        510 _TimerH_PARM_2:
+      00001C                        511 	.ds 1
+      00001D                        512 _TimerH_High_65536_65:
+      00001D                        513 	.ds 1
+      00001E                        514 _TimerL_PARM_2:
+      00001E                        515 	.ds 1
+      00001F                        516 _TimerL_High_65536_67:
+      00001F                        517 	.ds 1
+                                    518 ;--------------------------------------------------------
+                                    519 ; absolute external ram data
+                                    520 ;--------------------------------------------------------
+                                    521 	.area XABS    (ABS,XDATA)
+                                    522 ;--------------------------------------------------------
+                                    523 ; external initialized ram data
+                                    524 ;--------------------------------------------------------
+                                    525 	.area XISEG   (XDATA)
+      000000                        526 _Percent::
+      000000                        527 	.ds 4
+      000004                        528 _Frequency::
+      000004                        529 	.ds 4
+      000008                        530 _interrupt_flag::
+      000008                        531 	.ds 2
+                                    532 	.area HOME    (CODE)
+                                    533 	.area GSINIT0 (CODE)
+                                    534 	.area GSINIT1 (CODE)
+                                    535 	.area GSINIT2 (CODE)
+                                    536 	.area GSINIT3 (CODE)
+                                    537 	.area GSINIT4 (CODE)
+                                    538 	.area GSINIT5 (CODE)
+                                    539 	.area GSINIT  (CODE)
+                                    540 	.area GSFINAL (CODE)
+                                    541 	.area CSEG    (CODE)
+                                    542 ;--------------------------------------------------------
+                                    543 ; global & static initialisations
+                                    544 ;--------------------------------------------------------
+                                    545 	.area HOME    (CODE)
+                                    546 	.area GSINIT  (CODE)
+                                    547 	.area GSFINAL (CODE)
+                                    548 	.area GSINIT  (CODE)
+                                    549 ;--------------------------------------------------------
+                                    550 ; Home
+                                    551 ;--------------------------------------------------------
+                                    552 	.area HOME    (CODE)
+                                    553 	.area HOME    (CODE)
+                                    554 ;--------------------------------------------------------
+                                    555 ; code
+                                    556 ;--------------------------------------------------------
+                                    557 	.area CSEG    (CODE)
+                                    558 ;------------------------------------------------------------
+                                    559 ;Allocation info for local variables in function 'TimerH'
+                                    560 ;------------------------------------------------------------
+                                    561 ;Low                       Allocated with name '_TimerH_PARM_2'
+                                    562 ;High                      Allocated with name '_TimerH_High_65536_65'
+                                    563 ;------------------------------------------------------------
+                                    564 ;	Timer.c:27: void TimerH(unsigned char High, unsigned char Low)
+                                    565 ;	-----------------------------------------
+                                    566 ;	 function TimerH
+                                    567 ;	-----------------------------------------
+      000000                        568 _TimerH:
+                           000007   569 	ar7 = 0x07
+                           000006   570 	ar6 = 0x06
+                           000005   571 	ar5 = 0x05
+                           000004   572 	ar4 = 0x04
+                           000003   573 	ar3 = 0x03
+                           000002   574 	ar2 = 0x02
+                           000001   575 	ar1 = 0x01
+                           000000   576 	ar0 = 0x00
+      000000 E5 82            [12]  577 	mov	a,dpl
+      000002 90r00r1D         [24]  578 	mov	dptr,#_TimerH_High_65536_65
+      000005 F0               [24]  579 	movx	@dptr,a
+                                    580 ;	Timer.c:30: TMOD = 0x21;
+      000006 75 89 21         [24]  581 	mov	_TMOD,#0x21
+                                    582 ;	Timer.c:32: TL0 = Low;
+      000009 90r00r1C         [24]  583 	mov	dptr,#_TimerH_PARM_2
+      00000C E0               [24]  584 	movx	a,@dptr
+      00000D F5 8A            [12]  585 	mov	_TL0,a
+                                    586 ;	Timer.c:34: TH0 = High;
+      00000F 90r00r1D         [24]  587 	mov	dptr,#_TimerH_High_65536_65
+      000012 E0               [24]  588 	movx	a,@dptr
+      000013 F5 8C            [12]  589 	mov	_TH0,a
+                                    590 ;	Timer.c:36: TR0 = 1;
+                                    591 ;	assignBit
+      000015 D2 8C            [12]  592 	setb	_TR0
+                                    593 ;	Timer.c:37: while (TF0 == 0);
+      000017                        594 00101$:
+      000017 30 8D FD         [24]  595 	jnb	_TF0,00101$
+                                    596 ;	Timer.c:39: TR0 = 0;
+                                    597 ;	assignBit
+      00001A C2 8C            [12]  598 	clr	_TR0
+                                    599 ;	Timer.c:41: TF0 = 0;
+                                    600 ;	assignBit
+      00001C C2 8D            [12]  601 	clr	_TF0
+                                    602 ;	Timer.c:42: }
+      00001E 22               [24]  603 	ret
+                                    604 ;------------------------------------------------------------
+                                    605 ;Allocation info for local variables in function 'TimerL'
+                                    606 ;------------------------------------------------------------
+                                    607 ;Low                       Allocated with name '_TimerL_PARM_2'
+                                    608 ;High                      Allocated with name '_TimerL_High_65536_67'
+                                    609 ;------------------------------------------------------------
+                                    610 ;	Timer.c:58: void TimerL(unsigned char High, unsigned char Low)
+                                    611 ;	-----------------------------------------
+                                    612 ;	 function TimerL
+                                    613 ;	-----------------------------------------
+      00001F                        614 _TimerL:
+      00001F E5 82            [12]  615 	mov	a,dpl
+      000021 90r00r1F         [24]  616 	mov	dptr,#_TimerL_High_65536_67
+      000024 F0               [24]  617 	movx	@dptr,a
+                                    618 ;	Timer.c:61: TMOD = 0x21;
+      000025 75 89 21         [24]  619 	mov	_TMOD,#0x21
+                                    620 ;	Timer.c:63: TL0 = Low;
+      000028 90r00r1E         [24]  621 	mov	dptr,#_TimerL_PARM_2
+      00002B E0               [24]  622 	movx	a,@dptr
+      00002C F5 8A            [12]  623 	mov	_TL0,a
+                                    624 ;	Timer.c:65: TH0 = High;
+      00002E 90r00r1F         [24]  625 	mov	dptr,#_TimerL_High_65536_67
+      000031 E0               [24]  626 	movx	a,@dptr
+      000032 F5 8C            [12]  627 	mov	_TH0,a
+                                    628 ;	Timer.c:67: TR0 = 1;
+                                    629 ;	assignBit
+      000034 D2 8C            [12]  630 	setb	_TR0
+                                    631 ;	Timer.c:68: while (TF0 == 0);
+      000036                        632 00101$:
+      000036 30 8D FD         [24]  633 	jnb	_TF0,00101$
+                                    634 ;	Timer.c:70: TR0 = 0;
+                                    635 ;	assignBit
+      000039 C2 8C            [12]  636 	clr	_TR0
+                                    637 ;	Timer.c:72: TF0 = 0;
+                                    638 ;	assignBit
+      00003B C2 8D            [12]  639 	clr	_TF0
+                                    640 ;	Timer.c:73: }
+      00003D 22               [24]  641 	ret
+                                    642 ;------------------------------------------------------------
+                                    643 ;Allocation info for local variables in function 'timecal'
+                                    644 ;------------------------------------------------------------
+                                    645 ;	Timer.c:89: void timecal()
+                                    646 ;	-----------------------------------------
+                                    647 ;	 function timecal
+                                    648 ;	-----------------------------------------
+      00003E                        649 _timecal:
+                                    650 ;	Timer.c:91: TotalDelayMilli = (1 / Frequency) *1000;
+      00003E 90r00r04         [24]  651 	mov	dptr,#_Frequency
+      000041 E0               [24]  652 	movx	a,@dptr
+      000042 C0 E0            [24]  653 	push	acc
+      000044 A3               [24]  654 	inc	dptr
+      000045 E0               [24]  655 	movx	a,@dptr
+      000046 C0 E0            [24]  656 	push	acc
+      000048 A3               [24]  657 	inc	dptr
+      000049 E0               [24]  658 	movx	a,@dptr
+      00004A C0 E0            [24]  659 	push	acc
+      00004C A3               [24]  660 	inc	dptr
+      00004D E0               [24]  661 	movx	a,@dptr
+      00004E C0 E0            [24]  662 	push	acc
+      000050 90 00 00         [24]  663 	mov	dptr,#0x0000
+      000053 75 F0 80         [24]  664 	mov	b,#0x80
+      000056 74 3F            [12]  665 	mov	a,#0x3f
+      000058 12r00r00         [24]  666 	lcall	___fsdiv
+      00005B AC 82            [24]  667 	mov	r4,dpl
+      00005D AD 83            [24]  668 	mov	r5,dph
+      00005F AE F0            [24]  669 	mov	r6,b
+      000061 FF               [12]  670 	mov	r7,a
+      000062 E5 81            [12]  671 	mov	a,sp
+      000064 24 FC            [12]  672 	add	a,#0xfc
+      000066 F5 81            [12]  673 	mov	sp,a
+      000068 C0 04            [24]  674 	push	ar4
+      00006A C0 05            [24]  675 	push	ar5
+      00006C C0 06            [24]  676 	push	ar6
+      00006E C0 07            [24]  677 	push	ar7
+      000070 90 00 00         [24]  678 	mov	dptr,#0x0000
+      000073 75 F0 7A         [24]  679 	mov	b,#0x7a
+      000076 74 44            [12]  680 	mov	a,#0x44
+      000078 12r00r00         [24]  681 	lcall	___fsmul
+      00007B AC 82            [24]  682 	mov	r4,dpl
+      00007D AD 83            [24]  683 	mov	r5,dph
+      00007F AE F0            [24]  684 	mov	r6,b
+      000081 FF               [12]  685 	mov	r7,a
+      000082 E5 81            [12]  686 	mov	a,sp
+      000084 24 FC            [12]  687 	add	a,#0xfc
+      000086 F5 81            [12]  688 	mov	sp,a
+      000088 90r00r08         [24]  689 	mov	dptr,#_TotalDelayMilli
+      00008B EC               [12]  690 	mov	a,r4
+      00008C F0               [24]  691 	movx	@dptr,a
+      00008D ED               [12]  692 	mov	a,r5
+      00008E A3               [24]  693 	inc	dptr
+      00008F F0               [24]  694 	movx	@dptr,a
+      000090 EE               [12]  695 	mov	a,r6
+      000091 A3               [24]  696 	inc	dptr
+      000092 F0               [24]  697 	movx	@dptr,a
+      000093 EF               [12]  698 	mov	a,r7
+      000094 A3               [24]  699 	inc	dptr
+      000095 F0               [24]  700 	movx	@dptr,a
+                                    701 ;	Timer.c:93: TotalDelayMicro = (TotalDelayMilli *1000) - 45;
+      000096 C0 04            [24]  702 	push	ar4
+      000098 C0 05            [24]  703 	push	ar5
+      00009A C0 06            [24]  704 	push	ar6
+      00009C C0 07            [24]  705 	push	ar7
+      00009E 90 00 00         [24]  706 	mov	dptr,#0x0000
+      0000A1 75 F0 7A         [24]  707 	mov	b,#0x7a
+      0000A4 74 44            [12]  708 	mov	a,#0x44
+      0000A6 12r00r00         [24]  709 	lcall	___fsmul
+      0000A9 AC 82            [24]  710 	mov	r4,dpl
+      0000AB AD 83            [24]  711 	mov	r5,dph
+      0000AD AE F0            [24]  712 	mov	r6,b
+      0000AF FF               [12]  713 	mov	r7,a
+      0000B0 E5 81            [12]  714 	mov	a,sp
+      0000B2 24 FC            [12]  715 	add	a,#0xfc
+      0000B4 F5 81            [12]  716 	mov	sp,a
+      0000B6 E4               [12]  717 	clr	a
+      0000B7 C0 E0            [24]  718 	push	acc
+      0000B9 C0 E0            [24]  719 	push	acc
+      0000BB 74 34            [12]  720 	mov	a,#0x34
+      0000BD C0 E0            [24]  721 	push	acc
+      0000BF 74 42            [12]  722 	mov	a,#0x42
+      0000C1 C0 E0            [24]  723 	push	acc
+      0000C3 8C 82            [24]  724 	mov	dpl,r4
+      0000C5 8D 83            [24]  725 	mov	dph,r5
+      0000C7 8E F0            [24]  726 	mov	b,r6
+      0000C9 EF               [12]  727 	mov	a,r7
+      0000CA 12r00r00         [24]  728 	lcall	___fssub
+      0000CD AC 82            [24]  729 	mov	r4,dpl
+      0000CF AD 83            [24]  730 	mov	r5,dph
+      0000D1 AE F0            [24]  731 	mov	r6,b
+      0000D3 FF               [12]  732 	mov	r7,a
+      0000D4 E5 81            [12]  733 	mov	a,sp
+      0000D6 24 FC            [12]  734 	add	a,#0xfc
+      0000D8 F5 81            [12]  735 	mov	sp,a
+      0000DA 90r00r0C         [24]  736 	mov	dptr,#_TotalDelayMicro
+      0000DD EC               [12]  737 	mov	a,r4
+      0000DE F0               [24]  738 	movx	@dptr,a
+      0000DF ED               [12]  739 	mov	a,r5
+      0000E0 A3               [24]  740 	inc	dptr
+      0000E1 F0               [24]  741 	movx	@dptr,a
+      0000E2 EE               [12]  742 	mov	a,r6
+      0000E3 A3               [24]  743 	inc	dptr
+      0000E4 F0               [24]  744 	movx	@dptr,a
+      0000E5 EF               [12]  745 	mov	a,r7
+      0000E6 A3               [24]  746 	inc	dptr
+      0000E7 F0               [24]  747 	movx	@dptr,a
+                                    748 ;	Timer.c:95: HighTime = (TotalDelayMicro / 100) *Percent;
+      0000E8 C0 07            [24]  749 	push	ar7
+      0000EA C0 06            [24]  750 	push	ar6
+      0000EC C0 05            [24]  751 	push	ar5
+      0000EE C0 04            [24]  752 	push	ar4
+      0000F0 E4               [12]  753 	clr	a
+      0000F1 C0 E0            [24]  754 	push	acc
+      0000F3 C0 E0            [24]  755 	push	acc
+      0000F5 74 C8            [12]  756 	mov	a,#0xc8
+      0000F7 C0 E0            [24]  757 	push	acc
+      0000F9 74 42            [12]  758 	mov	a,#0x42
+      0000FB C0 E0            [24]  759 	push	acc
+      0000FD 8C 82            [24]  760 	mov	dpl,r4
+      0000FF 8D 83            [24]  761 	mov	dph,r5
+      000101 8E F0            [24]  762 	mov	b,r6
+      000103 EF               [12]  763 	mov	a,r7
+      000104 12r00r00         [24]  764 	lcall	___fsdiv
+      000107 A8 82            [24]  765 	mov	r0,dpl
+      000109 A9 83            [24]  766 	mov	r1,dph
+      00010B AA F0            [24]  767 	mov	r2,b
+      00010D FB               [12]  768 	mov	r3,a
+      00010E E5 81            [12]  769 	mov	a,sp
+      000110 24 FC            [12]  770 	add	a,#0xfc
+      000112 F5 81            [12]  771 	mov	sp,a
+      000114 90r00r00         [24]  772 	mov	dptr,#_Percent
+      000117 E0               [24]  773 	movx	a,@dptr
+      000118 C0 E0            [24]  774 	push	acc
+      00011A A3               [24]  775 	inc	dptr
+      00011B E0               [24]  776 	movx	a,@dptr
+      00011C C0 E0            [24]  777 	push	acc
+      00011E A3               [24]  778 	inc	dptr
+      00011F E0               [24]  779 	movx	a,@dptr
+      000120 C0 E0            [24]  780 	push	acc
+      000122 A3               [24]  781 	inc	dptr
+      000123 E0               [24]  782 	movx	a,@dptr
+      000124 C0 E0            [24]  783 	push	acc
+                                    784 ;	Timer.c:96: LowTime = TotalDelayMicro - HighTime;
+      000126 88 82            [24]  785 	mov	dpl,r0
+      000128 89 83            [24]  786 	mov	dph,r1
+      00012A 8A F0            [24]  787 	mov	b,r2
+      00012C EB               [12]  788 	mov	a,r3
+      00012D 12r00r00         [24]  789 	lcall	___fsmul
+      000130 A8 82            [24]  790 	mov	r0,dpl
+      000132 A9 83            [24]  791 	mov	r1,dph
+      000134 AA F0            [24]  792 	mov	r2,b
+      000136 FB               [12]  793 	mov	r3,a
+      000137 E5 81            [12]  794 	mov	a,sp
+      000139 24 FC            [12]  795 	add	a,#0xfc
+      00013B F5 81            [12]  796 	mov	sp,a
+      00013D D0 04            [24]  797 	pop	ar4
+      00013F D0 05            [24]  798 	pop	ar5
+      000141 D0 06            [24]  799 	pop	ar6
+      000143 D0 07            [24]  800 	pop	ar7
+      000145 C0 03            [24]  801 	push	ar3
+      000147 C0 02            [24]  802 	push	ar2
+      000149 C0 01            [24]  803 	push	ar1
+      00014B C0 00            [24]  804 	push	ar0
+      00014D C0 00            [24]  805 	push	ar0
+      00014F C0 01            [24]  806 	push	ar1
+      000151 C0 02            [24]  807 	push	ar2
+      000153 C0 03            [24]  808 	push	ar3
+                                    809 ;	Timer.c:97: HighTime = HighTime / 1.085;
+      000155 8C 82            [24]  810 	mov	dpl,r4
+      000157 8D 83            [24]  811 	mov	dph,r5
+      000159 8E F0            [24]  812 	mov	b,r6
+      00015B EF               [12]  813 	mov	a,r7
+      00015C 12r00r00         [24]  814 	lcall	___fssub
+      00015F AC 82            [24]  815 	mov	r4,dpl
+      000161 AD 83            [24]  816 	mov	r5,dph
+      000163 AE F0            [24]  817 	mov	r6,b
+      000165 FF               [12]  818 	mov	r7,a
+      000166 E5 81            [12]  819 	mov	a,sp
+      000168 24 FC            [12]  820 	add	a,#0xfc
+      00016A F5 81            [12]  821 	mov	sp,a
+      00016C D0 00            [24]  822 	pop	ar0
+      00016E D0 01            [24]  823 	pop	ar1
+      000170 D0 02            [24]  824 	pop	ar2
+      000172 D0 03            [24]  825 	pop	ar3
+      000174 C0 07            [24]  826 	push	ar7
+      000176 C0 06            [24]  827 	push	ar6
+      000178 C0 05            [24]  828 	push	ar5
+      00017A C0 04            [24]  829 	push	ar4
+      00017C 74 48            [12]  830 	mov	a,#0x48
+      00017E C0 E0            [24]  831 	push	acc
+      000180 74 E1            [12]  832 	mov	a,#0xe1
+      000182 C0 E0            [24]  833 	push	acc
+      000184 74 8A            [12]  834 	mov	a,#0x8a
+      000186 C0 E0            [24]  835 	push	acc
+      000188 74 3F            [12]  836 	mov	a,#0x3f
+      00018A C0 E0            [24]  837 	push	acc
+      00018C 88 82            [24]  838 	mov	dpl,r0
+      00018E 89 83            [24]  839 	mov	dph,r1
+      000190 8A F0            [24]  840 	mov	b,r2
+      000192 EB               [12]  841 	mov	a,r3
+      000193 12r00r00         [24]  842 	lcall	___fsdiv
+      000196 A8 82            [24]  843 	mov	r0,dpl
+      000198 A9 83            [24]  844 	mov	r1,dph
+      00019A AA F0            [24]  845 	mov	r2,b
+      00019C FB               [12]  846 	mov	r3,a
+      00019D E5 81            [12]  847 	mov	a,sp
+      00019F 24 FC            [12]  848 	add	a,#0xfc
+      0001A1 F5 81            [12]  849 	mov	sp,a
+      0001A3 D0 04            [24]  850 	pop	ar4
+      0001A5 D0 05            [24]  851 	pop	ar5
+      0001A7 D0 06            [24]  852 	pop	ar6
+      0001A9 D0 07            [24]  853 	pop	ar7
+      0001AB 90r00r04         [24]  854 	mov	dptr,#_HighTime
+      0001AE E8               [12]  855 	mov	a,r0
+      0001AF F0               [24]  856 	movx	@dptr,a
+      0001B0 E9               [12]  857 	mov	a,r1
+      0001B1 A3               [24]  858 	inc	dptr
+      0001B2 F0               [24]  859 	movx	@dptr,a
+      0001B3 EA               [12]  860 	mov	a,r2
+      0001B4 A3               [24]  861 	inc	dptr
+      0001B5 F0               [24]  862 	movx	@dptr,a
+      0001B6 EB               [12]  863 	mov	a,r3
+      0001B7 A3               [24]  864 	inc	dptr
+      0001B8 F0               [24]  865 	movx	@dptr,a
+                                    866 ;	Timer.c:98: LowTime = LowTime / 1.085;
+      0001B9 C0 03            [24]  867 	push	ar3
+      0001BB C0 02            [24]  868 	push	ar2
+      0001BD C0 01            [24]  869 	push	ar1
+      0001BF C0 00            [24]  870 	push	ar0
+      0001C1 74 48            [12]  871 	mov	a,#0x48
+      0001C3 C0 E0            [24]  872 	push	acc
+      0001C5 74 E1            [12]  873 	mov	a,#0xe1
+      0001C7 C0 E0            [24]  874 	push	acc
+      0001C9 74 8A            [12]  875 	mov	a,#0x8a
+      0001CB C0 E0            [24]  876 	push	acc
+      0001CD 74 3F            [12]  877 	mov	a,#0x3f
+      0001CF C0 E0            [24]  878 	push	acc
+      0001D1 8C 82            [24]  879 	mov	dpl,r4
+      0001D3 8D 83            [24]  880 	mov	dph,r5
+      0001D5 8E F0            [24]  881 	mov	b,r6
+      0001D7 EF               [12]  882 	mov	a,r7
+      0001D8 12r00r00         [24]  883 	lcall	___fsdiv
+      0001DB AC 82            [24]  884 	mov	r4,dpl
+      0001DD AD 83            [24]  885 	mov	r5,dph
+      0001DF AE F0            [24]  886 	mov	r6,b
+      0001E1 FF               [12]  887 	mov	r7,a
+      0001E2 E5 81            [12]  888 	mov	a,sp
+      0001E4 24 FC            [12]  889 	add	a,#0xfc
+      0001E6 F5 81            [12]  890 	mov	sp,a
+      0001E8 D0 00            [24]  891 	pop	ar0
+      0001EA D0 01            [24]  892 	pop	ar1
+      0001EC D0 02            [24]  893 	pop	ar2
+      0001EE D0 03            [24]  894 	pop	ar3
+      0001F0 90r00r00         [24]  895 	mov	dptr,#_LowTime
+      0001F3 EC               [12]  896 	mov	a,r4
+      0001F4 F0               [24]  897 	movx	@dptr,a
+      0001F5 ED               [12]  898 	mov	a,r5
+      0001F6 A3               [24]  899 	inc	dptr
+      0001F7 F0               [24]  900 	movx	@dptr,a
+      0001F8 EE               [12]  901 	mov	a,r6
+      0001F9 A3               [24]  902 	inc	dptr
+      0001FA F0               [24]  903 	movx	@dptr,a
+      0001FB EF               [12]  904 	mov	a,r7
+      0001FC A3               [24]  905 	inc	dptr
+      0001FD F0               [24]  906 	movx	@dptr,a
+                                    907 ;	Timer.c:100: ValueH = 65536 - HighTime;
+      0001FE C0 07            [24]  908 	push	ar7
+      000200 C0 06            [24]  909 	push	ar6
+      000202 C0 05            [24]  910 	push	ar5
+      000204 C0 04            [24]  911 	push	ar4
+      000206 C0 00            [24]  912 	push	ar0
+      000208 C0 01            [24]  913 	push	ar1
+      00020A C0 02            [24]  914 	push	ar2
+      00020C C0 03            [24]  915 	push	ar3
+      00020E 90 00 00         [24]  916 	mov	dptr,#0x0000
+      000211 75 F0 80         [24]  917 	mov	b,#0x80
+      000214 74 47            [12]  918 	mov	a,#0x47
+      000216 12r00r00         [24]  919 	lcall	___fssub
+      000219 A8 82            [24]  920 	mov	r0,dpl
+      00021B A9 83            [24]  921 	mov	r1,dph
+      00021D AA F0            [24]  922 	mov	r2,b
+      00021F FB               [12]  923 	mov	r3,a
+      000220 E5 81            [12]  924 	mov	a,sp
+      000222 24 FC            [12]  925 	add	a,#0xfc
+      000224 F5 81            [12]  926 	mov	sp,a
+      000226 88 82            [24]  927 	mov	dpl,r0
+      000228 89 83            [24]  928 	mov	dph,r1
+      00022A 8A F0            [24]  929 	mov	b,r2
+      00022C EB               [12]  930 	mov	a,r3
+      00022D 12r00r00         [24]  931 	lcall	___fs2uint
+      000230 AA 82            [24]  932 	mov	r2,dpl
+      000232 AB 83            [24]  933 	mov	r3,dph
+      000234 D0 04            [24]  934 	pop	ar4
+      000236 D0 05            [24]  935 	pop	ar5
+      000238 D0 06            [24]  936 	pop	ar6
+      00023A D0 07            [24]  937 	pop	ar7
+      00023C 90r00r14         [24]  938 	mov	dptr,#_ValueH
+      00023F EA               [12]  939 	mov	a,r2
+      000240 F0               [24]  940 	movx	@dptr,a
+      000241 EB               [12]  941 	mov	a,r3
+      000242 A3               [24]  942 	inc	dptr
+      000243 F0               [24]  943 	movx	@dptr,a
+                                    944 ;	Timer.c:102: ConvLH = ValueH &0x00FF;
+      000244 8A 00            [24]  945 	mov	ar0,r2
+      000246 79 00            [12]  946 	mov	r1,#0x00
+      000248 90r00r12         [24]  947 	mov	dptr,#_ConvLH
+      00024B E8               [12]  948 	mov	a,r0
+      00024C F0               [24]  949 	movx	@dptr,a
+      00024D E9               [12]  950 	mov	a,r1
+      00024E A3               [24]  951 	inc	dptr
+      00024F F0               [24]  952 	movx	@dptr,a
+                                    953 ;	Timer.c:104: LowH = ConvLH;
+      000250 90r00r00         [24]  954 	mov	dptr,#_LowH
+      000253 E8               [12]  955 	mov	a,r0
+      000254 F0               [24]  956 	movx	@dptr,a
+                                    957 ;	Timer.c:106: ConvHH = ValueH &0xFF00;
+                                    958 ;	Timer.c:108: ConvHH = ConvHH >> 8;
+      000255 8B 02            [24]  959 	mov	ar2,r3
+      000257 7B 00            [12]  960 	mov	r3,#0x00
+      000259 90r00r10         [24]  961 	mov	dptr,#_ConvHH
+      00025C EA               [12]  962 	mov	a,r2
+      00025D F0               [24]  963 	movx	@dptr,a
+      00025E EB               [12]  964 	mov	a,r3
+      00025F A3               [24]  965 	inc	dptr
+      000260 F0               [24]  966 	movx	@dptr,a
+                                    967 ;	Timer.c:110: HighH = ConvHH;
+      000261 90r00r00         [24]  968 	mov	dptr,#_HighH
+      000264 EA               [12]  969 	mov	a,r2
+      000265 F0               [24]  970 	movx	@dptr,a
+                                    971 ;	Timer.c:112: ValueL = 65536 - LowTime;
+      000266 C0 04            [24]  972 	push	ar4
+      000268 C0 05            [24]  973 	push	ar5
+      00026A C0 06            [24]  974 	push	ar6
+      00026C C0 07            [24]  975 	push	ar7
+      00026E 90 00 00         [24]  976 	mov	dptr,#0x0000
+      000271 75 F0 80         [24]  977 	mov	b,#0x80
+      000274 74 47            [12]  978 	mov	a,#0x47
+      000276 12r00r00         [24]  979 	lcall	___fssub
+      000279 AC 82            [24]  980 	mov	r4,dpl
+      00027B AD 83            [24]  981 	mov	r5,dph
+      00027D AE F0            [24]  982 	mov	r6,b
+      00027F FF               [12]  983 	mov	r7,a
+      000280 E5 81            [12]  984 	mov	a,sp
+      000282 24 FC            [12]  985 	add	a,#0xfc
+      000284 F5 81            [12]  986 	mov	sp,a
+      000286 8C 82            [24]  987 	mov	dpl,r4
+      000288 8D 83            [24]  988 	mov	dph,r5
+      00028A 8E F0            [24]  989 	mov	b,r6
+      00028C EF               [12]  990 	mov	a,r7
+      00028D 12r00r00         [24]  991 	lcall	___fs2uint
+      000290 AE 82            [24]  992 	mov	r6,dpl
+      000292 AF 83            [24]  993 	mov	r7,dph
+      000294 90r00r1A         [24]  994 	mov	dptr,#_ValueL
+      000297 EE               [12]  995 	mov	a,r6
+      000298 F0               [24]  996 	movx	@dptr,a
+      000299 EF               [12]  997 	mov	a,r7
+      00029A A3               [24]  998 	inc	dptr
+      00029B F0               [24]  999 	movx	@dptr,a
+                                   1000 ;	Timer.c:114: ConvLL = ValueL &0x00FF;
+      00029C 8E 04            [24] 1001 	mov	ar4,r6
+      00029E 7D 00            [12] 1002 	mov	r5,#0x00
+      0002A0 90r00r18         [24] 1003 	mov	dptr,#_ConvLL
+      0002A3 EC               [12] 1004 	mov	a,r4
+      0002A4 F0               [24] 1005 	movx	@dptr,a
+      0002A5 ED               [12] 1006 	mov	a,r5
+      0002A6 A3               [24] 1007 	inc	dptr
+      0002A7 F0               [24] 1008 	movx	@dptr,a
+                                   1009 ;	Timer.c:116: LowL = ConvLL;
+      0002A8 90r00r00         [24] 1010 	mov	dptr,#_LowL
+      0002AB EC               [12] 1011 	mov	a,r4
+      0002AC F0               [24] 1012 	movx	@dptr,a
+                                   1013 ;	Timer.c:118: ConvHL = ValueL &0xFF00;
+                                   1014 ;	Timer.c:120: ConvHL = ConvHL >> 8;
+      0002AD 8F 06            [24] 1015 	mov	ar6,r7
+      0002AF 7F 00            [12] 1016 	mov	r7,#0x00
+      0002B1 90r00r16         [24] 1017 	mov	dptr,#_ConvHL
+      0002B4 EE               [12] 1018 	mov	a,r6
+      0002B5 F0               [24] 1019 	movx	@dptr,a
+      0002B6 EF               [12] 1020 	mov	a,r7
+      0002B7 A3               [24] 1021 	inc	dptr
+      0002B8 F0               [24] 1022 	movx	@dptr,a
+                                   1023 ;	Timer.c:121: HighL = ConvHL;
+      0002B9 90r00r00         [24] 1024 	mov	dptr,#_HighL
+      0002BC EE               [12] 1025 	mov	a,r6
+      0002BD F0               [24] 1026 	movx	@dptr,a
+                                   1027 ;	Timer.c:122: }
+      0002BE 22               [24] 1028 	ret
+                                   1029 	.area CSEG    (CODE)
+                                   1030 	.area CONST   (CODE)
+                                   1031 	.area XINIT   (CODE)
+      000000                       1032 __xinit__Percent:
+      000000 00 00 48 42           1033 	.byte #0x00, #0x00, #0x48, #0x42	;  5.000000e+001
+      000004                       1034 __xinit__Frequency:
+      000004 00 00 96 44           1035 	.byte #0x00, #0x00, #0x96, #0x44	;  1.200000e+003
+      000008                       1036 __xinit__interrupt_flag:
+      000008 00 00                 1037 	.byte #0x00, #0x00	; 0
+                                   1038 	.area CABS    (ABS,CODE)

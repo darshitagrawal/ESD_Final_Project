@@ -1,0 +1,37 @@
+# depslib dependency file v1.0
+1639170523 source:e:\usa\cuboulder\semester_1\esd\project\esd_final_project_code\lcd.c
+	"LCD.h"
+
+1639170523 e:\usa\cuboulder\semester_1\esd\project\esd_final_project_code\lcd.h
+	<stdint.h>
+	<mcs51/8051.h>
+	<mcs51reg.h>
+	<at89c51ed2.h>
+	<stdio.h>
+	<stdint.h>
+	<stdlib.h>
+	<string.h>
+
+1639170743 source:e:\usa\cuboulder\semester_1\esd\project\esd_final_project_code\main.c
+	"LCD.h"
+	"UART.h"
+	"Timer.h"
+
+1639170553 e:\usa\cuboulder\semester_1\esd\project\esd_final_project_code\uart.h
+	<mcs51/8051.h>
+	<mcs51reg.h>
+	<at89c51ed2.h>
+	<stdio.h>
+	<stdint.h>
+	<stdlib.h>
+	<string.h>
+
+1639170553 source:e:\usa\cuboulder\semester_1\esd\project\esd_final_project_code\uart.c
+	"UART.h"
+
+1639170563 source:e:\usa\cuboulder\semester_1\esd\project\esd_final_project_code\timer.c
+	"Timer.h"
+	"UART.h"
+
+1639170316 e:\usa\cuboulder\semester_1\esd\project\esd_final_project_code\timer.h
+
